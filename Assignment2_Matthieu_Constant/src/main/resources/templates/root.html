@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<style> 
+body { 
+background-color: #838080 ;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 15px
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+form {
+width: 100px;
+height: 50px;
+}
+input {
+background-color: #333; 
+width: 100px;
+height: 50px;
+position: fixed;
+  right: 0px; bottom: 0px;
+  color: white;
+}
+.logout { 
+text-align: center;
+font-size: 50px;
+}
+input:hover {
+  background-color: #111;
+}
+iframe {
+margin-top: 20px;
+float: center;
+margin: auto;
+display: block;
+}
+
+
+</style>
+</head>
+<body>
+
+<ul>
+<li><img src="https://www.pngall.com/wp-content/uploads/5/Google-Logo-PNG-Free-Image.png" alt="logo" width="150" height="75"> </li>
+<li><a href="/">Home</a></li>
+<li><a href="/employees">View Employee</a></li>
+<li><div sec:authorize="hasRole('OWNER')">
+<a th:href="@{/addEmployee}">Add Employee</a> </div> </li>
+<li> <div sec:authorize="isAnonymous()"> <a th:href="@{/login}"> Log in</a></div> </li>
+</ul>
+
+<div class="logout" th:if="${param.logout}" style="color:red;">
+You have been logged out 
+</div>
+<div sec:authorize="isAuthenticated()">
+<form method="post" th:action="@{/logout}">
+<input type="submit" value="Logout">
+</form>  
+</div>
+
+<iframe width="1100" height="600" src="https://www.youtube.com/embed/zhUgaKb0s5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
+</body>
+</html>

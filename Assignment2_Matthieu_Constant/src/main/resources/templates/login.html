@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<style> 
+body { 
+background-color: #838080 ;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 15px
+}
+
+li a:hover {
+  background-color: #111;
+}
+.incorrect {
+font-size: 20px;
+text-align: center;
+ }
+ form {
+ margin-top: 50px;
+ margin-left: auto;
+ margin-right: auto;
+ text-align: center;
+ font-size: 50px;
+ font-style: helvetica;
+ }
+ input {
+ width: 150px;
+ height: 35px;
+ }
+ .submit {
+ background-color: #333; 
+width: 100px;
+height: 50px;
+  color: white;
+  }
+.submit:hover {
+  background-color: #111;
+}
+.pfp {
+display:block;
+margin-left: auto;
+margin-right: auto;
+margin-top: 20px;
+}
+ 
+</style>
+</head>
+<body>
+
+<ul>
+<li><img src="https://www.pngall.com/wp-content/uploads/5/Google-Logo-PNG-Free-Image.png" alt="logo" width="150" height="75"> </li>
+<li><a th:href="@{/}">Home</a> </li>
+</ul>
+
+<img class="pfp" src="https://www.pngkit.com/png/full/202-2029263_circle.png" alt="logo" width="200" height="200"> 
+
+<div class="incorrect" th:if="${param.error}" style="color:red;">
+Invalid Username or Password.
+</div>
+
+<form th:action="@{/login}" method="post">
+Username: <input type="text" name="username" placeholder="Username" required autofocus> <br>
+Password: <input type="password"  name="password" placeholder="Password" required> <br> 
+		<input class="submit" type="submit" value="login"> 
+</form>
+
+
+</body>
+</html>

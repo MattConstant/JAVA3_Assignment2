@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Access Denied</title>
+<style> 
+body { 
+background-color: #838080 ;
+}
+h1 {
+text-align: center;
+font-size:100px;
+}
+
+</style>
+</head>
+<body>
+
+<h1>You are not allowed on this page, please return</h1><a th:href="@{/}">Home</a>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit an Employee</title>
+<style> 
+body { 
+background-color: #838080 ;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 15px
+}
+
+li a:hover {
+  background-color: #111;
+}
+ form {
+ margin-top: 50px;
+ margin-left: auto;
+ margin-right: auto;
+ text-align: center;
+ font-size: 50px;
+ font-style: helvetica;
+ }
+  input {
+ width: 150px;
+ height: 35px;
+ }
+  .submit {
+ background-color: #333; 
+width: 100px;
+height: 50px;
+  color: white;
+  }
+.submit:hover {
+  background-color: #111;
+}
+h1 {
+text-align: center; 
+font-style: helvetica;
+font-size: 50px;
+}
+h3 {
+text-align: center; 
+font-style: helvetica;
+}
+.info {
+  background: #acacac;
+    margin: auto; 
+    padding: 20px;
+    width: 500px; 
+    text-align: center;
+}
+.days {
+    background: #acacac;
+    margin: auto; 
+    padding: 20px;
+    width: 500px; 
+    text-align: center;
+}
+.logout { 
+text-align: center;
+background-color: #333; 
+width: 100px;
+height: 50px;
+position: fixed;
+right: 0px; bottom: 0px;
+color: white;
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<ul>
+<li><img src="https://www.pngall.com/wp-content/uploads/5/Google-Logo-PNG-Free-Image.png" alt="logo" width="150" height="75"> </li>
+<li><a href="/">Home</a></li>
+<li><a href="/employees">View Employee</a></li>
+</ul>
+
+<h1>Edit An Employee</h1>
+
+<form action="/editEmployee" method="post" th:object="${employee}" > 
+<div class="info"> 
+<input type="hidden" th:field="*{id}">
+Name: <input  type="text" th:field="*{name}"> 
+Employee ID: <input  type="text" th:field="*{employeeId}"> 
+</div>
+<h3>Hours:</h3>
+<div class="days"> 
+Sunday: <input type="number" th:field="*{sunday}"> <br>
+Monday: <input type="number" th:field="*{monday}"> <br>
+Tuesday: <input type="number" th:field="*{tuesday}"> <br>
+Wednesday: <input type="number" th:field="*{wednesday}"> <br>
+Thursday: <input type="number" th:field="*{thursday}"> <br>
+Friday: <input type="number" th:field="*{friday}"> <br>
+Saturday: <input type="number" th:field="*{saturday}"> <br>
+Wage: <input type="number" th:field="*{wage}"> <br> 
+</div>
+<input type="submit" value="Submit">
+</form>
+
+<div sec:authorize="isAuthenticated()">
+<form method="post" th:action="@{/logout}">
+<input class="logout" type="submit" value="Logout">
+</form>  
+</div>
+
+<a href="/">Home</a>
+
+</body>
+</html>
